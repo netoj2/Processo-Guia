@@ -1,0 +1,9 @@
+# Ignorar diretórios de configuração
+.vscode/
+.idea/
+node_modules/
+.env
+*.log
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
