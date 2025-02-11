@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "f7be0418-0ffb-41a5-a19d-b8fbe44e6d4a",
+		"name": "guia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28627087",
+		"_collection_link": "https://team-janos-751191.postman.co/workspace/My-Workspace~04d37063-bc3e-4e10-8959-aa8ea2cc202e/collection/28627087-f7be0418-0ffb-41a5-a19d-b8fbe44e6d4a?action=share&source=collection_link&creator=28627087"
+	},
+	"item": [
+		{
+			"name": "400 - Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de resposta é 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2YWxpZGF0aW9uX2NvZGUiOiI5Zjc4NDk2OGM0MTM3OTYyMTJiMWIxNTQ5OGU0OGQ0ODY1MWJmZDBiM2Q0Y2I5OTdkZGMwMGViNzRlZmNhNGVjIiwidXNlcl9pbmZvIjp7Im5vbWUiOiJKYW5vciBOZXRvIC0gQ2hlZXJzICIsImVtYWlsIjoiamFub3JjaGVlcnNAZ21haWwuY29tIiwidGVsZWZvbmUiOiIrNTU0MTk4ODQxMTU0MyIsImNwZiI6IjgzODc5NzEzNjc3Iiwic2FsZG8iOjIyLjYxNn0sImV4cCI6MTc0MDA5MDE3NywidXNlciI6MTA2MTh9.1xeNnlPwT0_VFnNjRkIFbbRFP08FpnQGMGXrhEQQXpg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"age\":\"23\"\r\n    // \"name\":\"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 - OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de resposta é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar resposta da API\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.not.be.null;\r",
+							"    pm.expect(jsonData.name).to.be.a('string');\r",
+							"    pm.expect(jsonData.username).to.not.be.null;\r",
+							"    pm.expect(jsonData.address).to.be.an('object');\r",
+							"    pm.expect(jsonData.address).to.have.property('street');\r",
+							"    pm.expect(jsonData.address).to.have.property('city');\r",
+							"    pm.expect(jsonData.address).to.have.property('zipcode');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2YWxpZGF0aW9uX2NvZGUiOiI5Zjc4NDk2OGM0MTM3OTYyMTJiMWIxNTQ5OGU0OGQ0ODY1MWJmZDBiM2Q0Y2I5OTdkZGMwMGViNzRlZmNhNGVjIiwidXNlcl9pbmZvIjp7Im5vbWUiOiJKYW5vciBOZXRvIC0gQ2hlZXJzICIsImVtYWlsIjoiamFub3JjaGVlcnNAZ21haWwuY29tIiwidGVsZWZvbmUiOiIrNTU0MTk4ODQxMTU0MyIsImNwZiI6IjgzODc5NzEzNjc3Iiwic2FsZG8iOjIyLjYxNn0sImV4cCI6MTc0MDA5MDE3NywidXNlciI6MTA2MTh9.1xeNnlPwT0_VFnNjRkIFbbRFP08FpnQGMGXrhEQQXpg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "500 - Server Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de resposta é 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/server-error",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"server-error"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
